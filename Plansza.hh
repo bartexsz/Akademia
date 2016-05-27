@@ -36,12 +36,26 @@ public:
 	int GetY();
 };
 
+class Plansza{
+private:
+	Pionek *tab[8][8];
+	list<Plansza> lista;
+};
+
 class Tablica
 {
+private:
 	Pionek *tab[8][8];
 	list<Pionek> WhiteList;
 	list<Pionek> BlackList;
+	Plansza drzewo;
 public:
+	int CheckLeft(Pionek P); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	int CheckRight(Pionek P); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	void MoveLeft(Pionek *P);
+	void MoveRight(Pionek *P);
+	void BeatLeft(Pionek *P);
+	void BeatRight(Pionek *P);
 	void Wyswietl();
 	void Initiation();
 };
