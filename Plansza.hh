@@ -36,8 +36,9 @@ public:
 class Tablica
 {
 	enum pionek{pusty=0, bialy=1, czarny=2};
-	pionek tab[8][8];
+
 public:
+//	Pionek *tab[8][8];
 	void Wyswietl();
 };
 

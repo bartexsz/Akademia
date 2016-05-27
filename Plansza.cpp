@@ -39,11 +39,13 @@ void Tablica::Wyswietl()
 
 			}
 
-			if(tab[i][j]=='pusty')  cout<<" |";
-			if(tab[i][j]=='bialy')  cout<<"b|";
-			if(tab[i][j]=='czarny') cout<<"c|";
+			if(tab[i][j]==0)  cout<<" |";
+			if((tab[i][j]->GetColor())=='black')  cout<<"b|";
+			if((tab[i][j]->GetColor())=='white') cout<<"c|";
 
 		}
+		cout<<endl;
+		cout<< "_______________________\n";
 	}
 }
 
