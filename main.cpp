@@ -7,9 +7,10 @@
 //============================================================================
 
 #include <iostream>
+#include "Plansza.hh"
 using namespace std;
 
+
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	return 0;
 }
