@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Plansza.hh"
+
 using namespace std;
 
 
