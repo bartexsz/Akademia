@@ -7,8 +7,12 @@
 
 #ifndef PLANSZA_HH_
 #define PLANSZA_HH_
+
 #include <iostream>
+#include <list>
+
 using namespace std;
+
 enum color{
 	white = 0,
 	black = 1
@@ -35,11 +39,12 @@ public:
 
 class Tablica
 {
-	enum pionek{pusty=0, bialy=1, czarny=2};
-
+	Pionek *tab[8][8];
+	list<Pionek> WhiteList;
+	list<Pionek> BlackList;
 public:
-//	Pionek *tab[8][8];
 	void Wyswietl();
+	void Initiation();
 };
 
 #endif /* PLANSZA_HH_ */

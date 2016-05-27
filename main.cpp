@@ -12,6 +12,8 @@ using namespace std;
 
 
 int main() {
-
+	Tablica test;
+	test.Initiation();
+	test.Wyswietl();
 	return 0;
 }
