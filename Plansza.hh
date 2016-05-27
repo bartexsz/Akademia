@@ -7,7 +7,8 @@
 
 #ifndef PLANSZA_HH_
 #define PLANSZA_HH_
-
+#include <iostream>
+using namespace std;
 enum color{
 	white = 0,
 	black = 1
@@ -32,7 +33,12 @@ public:
 	int GetY();
 };
 
-
-
+class Tablica
+{
+	enum pionek{pusty=0, bialy=1, czarny=2};
+	pionek tab[8][8];
+public:
+	void Wyswietl();
+};
 
 #endif /* PLANSZA_HH_ */

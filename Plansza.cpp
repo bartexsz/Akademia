@@ -1,4 +1,5 @@
 /*
+ /*
  * Plansza.cpp
  *
  *  Created on: May 27, 2016
@@ -26,5 +27,24 @@ int Pionek::GetY(){
 	return _y;
 }
 
+void Tablica::Wyswietl()
+{
+	for(int i=0; i<8; i++)
+	{
+		for(int j=0; j<8; j++)
+		{
+			if(j==0)
+			{
+				cout<<8-i<<" |";
+
+			}
+
+			if(tab[i][j]=='pusty')  cout<<" |";
+			if(tab[i][j]=='bialy')  cout<<"b|";
+			if(tab[i][j]=='czarny') cout<<"c|";
+
+		}
+	}
+}
 
 
