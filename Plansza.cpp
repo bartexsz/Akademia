@@ -33,7 +33,6 @@ void Tablica::Wyswietl()
 	{
 		for(int i=0;i<8;i++)
 		{
-<<<<<<< HEAD
 			cout<<"dla x:"<<i<<" i y:"<<j<<"->";
 			if (tab[i][j]==0) cout<<"0"<<endl;
 			else
@@ -43,11 +42,6 @@ void Tablica::Wyswietl()
 				}
 		}
 	}
-=======
-			if(j==0)
-			{
-				//cout<<8-i<<" |";
->>>>>>> ac326ff601b22d81ebf42a94491d3147bc555b33
 
 
 	for(int j=7; j>=0; j--)
@@ -126,81 +120,4 @@ void Tablica::Initiation()
 				cout<<"Brak pionka dla "<<"x="<<i<<" y="<<j<<endl;
 			}
 		}
-}
-
-
-int Tablica::CheckLeft(Pionek P){
-	if(P.GetX() == 1 || P.GetY() == 6){
-		if(tab[P.GetX()-1][P.GetY()+1] == 0)
-			return 1;
-		else
-			return 0;
-	}else if(P.GetX() > 1 && P.GetY() < 6){
-		if(tab[P.GetX()-1][P.GetY()+1] == 0)
-			return 1;
-		else{
-			if(tab[P.GetX()-1][P.GetY()+1]->GetColor() == black)
-				return 0;
-			else if(tab[P.GetX()-1][P.GetY()+1]->GetColor() == white){
-				if(tab[P.GetX()-2][P.GetY()+2] == 0)
-					return 2;
-				else
-					return 0;
-			}
-		}
-	}
-	return 0;
-}
-
-int Tablica::CheckRight(Pionek P){
-	if(P.GetX() == 6 || P.GetY() == 6){
-		if(tab[P.GetX()+1][P.GetY()+1] == 0)
-			return 1;
-		else
-			return 0;
-	}else if(P.GetX() < 6 && P.GetY() < 6){
-		if(tab[P.GetX()+1][P.GetY()+1] == 0)
-			return 1;
-		else{
-			if(tab[P.GetX()+1][P.GetY()+1]->GetColor() == black)
-				return 0;
-			else if(tab[P.GetX()+1][P.GetY()+1]->GetColor() == white){
-				if(tab[P.GetX()+2][P.GetY()+2] == 0)
-					return 2;
-				else
-					return 0;
-			}
-		}
-	}
-	return 0;
-}
-
-void Tablica::MoveLeft(Pionek *P){
-	tab[P->GetX()-1][P->GetY()+1] = P;
-	tab[P->GetX()][P->GetY()] = 0;
-	P->SetX(P->GetX()-1);
-	P->SetY(P->GetY()+1);
-}
-
-void Tablica::MoveRight(Pionek *P){
-	tab[P->GetX()+1][P->GetY()+1] = P;
-	tab[P->GetX()][P->GetY()] = 0;
-	P->SetX(P->GetX()+1);
-	P->SetY(P->GetY()+1);
-}
-
-void Tablica::BeatLeft(Pionek *P){
-	tab[P->GetX()-2][P->GetY()+2] = P;
-	tab[P->GetX()-1][P->GetY()+1] = 0;
-	tab[P->GetX()][P->GetY()] = 0;
-	P->SetX(P->GetX()-2);
-	P->SetY(P->GetY()+2);
-}
-
-void Tablica::BeatRight(Pionek *P){
-	tab[P->GetX()+2][P->GetY()+2] = P;
-	tab[P->GetX()+1][P->GetY()+1] = 0;
-	tab[P->GetX()][P->GetY()] = 0;
-	P->SetX(P->GetX()+2);
-	P->SetY(P->GetY()+2);
 }

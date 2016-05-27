@@ -45,10 +45,8 @@ private:
 
 class Tablica
 {
-<<<<<<< HEAD
-=======
+
 private:
->>>>>>> ac326ff601b22d81ebf42a94491d3147bc555b33
 	Pionek *tab[8][8];
 	list<Pionek> WhiteList;
 	list<Pionek> BlackList;
@@ -64,9 +62,5 @@ public:
 	void Initiation();
 };
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> ac326ff601b22d81ebf42a94491d3147bc555b33
 #endif /* PLANSZA_HH_ */
