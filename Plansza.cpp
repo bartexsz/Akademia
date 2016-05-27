@@ -46,7 +46,102 @@ void Tablica::Wyswietl()
 		}
 	}
 }
+void Tablica::Wyswietl()
+{
 
+	cout<<"jou\n";
+	for(int j=0; j<8; j++)
+	{
+		for(int i=0;i<8;i++)
+		{
+			cout<<"dla x:"<<i<<" i y:"<<j<<"->";
+			if (tab[i][j]==0) cout<<"0"<<endl;
+			else
+				{
+					if((tab[i][j]->GetColor())==black) cout<<"czarny\n";
+					else cout<<"bialy\n";
+				}
+		}
+	}
+
+
+	for(int j=7; j>=0; j--)
+	{
+		for(int i=0; i<8; i++)
+		{
+			if(i==0)
+			{
+				cout<<j<<"  |";
+
+			}
+			if((((j%2)==0)&&((i%2)==1))||(((j%2)==1)&&((i%2)==0))) cout<<"_|";
+			else
+			{
+			if(tab[i][j]==0)  cout<<" |";
+			else
+			{
+				if((tab[i][j]->GetColor())==black) cout<<"c|";
+				if((tab[i][j]->GetColor())==white) cout<<"b|";
+			}
+			}
+
+		}
+		cout<<endl;
+	}
+	cout<<"    ";
+	for (int i=0; i<8; i++)
+	{
+		cout<<i<<" ";
+	}
+}
+
+
+void Tablica::Initiation()
+{
+	int tmp;
+	for(int j = 0; j < 3; j++)
+	{
+		for(int i = j%2; i < 8; i+=2){
+			Pionek P(white,i,j);
+			WhiteList.push_back(P);
+			tab[i][j] = &WhiteList.back();
+			cout<<"Bialy pionek dla:"<<"x="<<i<<" y="<<j<<endl;
+		}
+	}
+	for(int j = 0; j < 3; j++)
+	{
+		if((j%2)==0) tmp=1;
+		else tmp=0;
+		for(int i =tmp; i < 8; i+=2)
+		{
+			tab[i][j] = 0;
+			cout<<"Brak pionka dla "<<"x="<<i<<" y="<<j<<endl;
+		}
+	}
+	for(int j = 3; j < 5; j++){
+		for(int i =0; i < 8; i++){
+			tab[i][j] = 0;
+			cout<<"Brak pionka dla "<<"x="<<i<<" y="<<j<<endl;
+		}
+	}
+	for(int j = 5; j < 8; j++){
+		for(int i = j%2; i < 8; i+=2){
+			Pionek P(black,i,j);
+			BlackList.push_back(P);
+			tab[i][j] = &BlackList.back();
+			cout<<"Czarny pionek dla:"<<"x="<<i<<" y="<<j<<endl;
+		}
+	}
+	for(int j = 5; j < 8; j++){
+				if((j%2)==0) tmp=1;
+				else tmp=0;
+			for(int i =tmp; i < 8; i+=2){
+
+				tab[i][j] = 0;
+				cout<<"Brak pionka dla "<<"x="<<i<<" y="<<j<<endl;
+			}
+		}
+}
 void Tablica::Initiation(){
 	for(int j = 0; j < 3; j++){
 		for(int i = i%2; i < 8; i+=2){
