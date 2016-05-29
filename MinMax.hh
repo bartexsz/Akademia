@@ -17,7 +17,7 @@ using namespace std;
 class MinMax{
 private:
 	Pole tab[8][8];
-	list< list<int[2]> > Graf;
+	list< list<int[3]> > Graf;
 	Move M;
 public:
 	void CopyTab(Pole main_tab[8][8]);

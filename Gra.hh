@@ -18,6 +18,7 @@ private:
 	Pole tab[8][8];
 public:
 	void Initiation();
+	void Wyswietl();
 };
 
 

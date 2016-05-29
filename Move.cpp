@@ -7,50 +7,50 @@
 
 #include "Move.hh"
 
-int Move::CheckLeft(Pole tab[8][8], int x, int y){
+Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
 	if(x == 1 || y == 6){
 		if(tab[x-1][y+1] == 0)
-			return 1;
+			return MoveL;
 		else
 			return 0;
 	}else if(x > 1 && y < 6){
 		if(tab[x-1][y+1] == 0)
-			return 1;
+			return MoveL;
 		else{
 			if(tab[x-1][y+1] == Black)
-				return 0;
+				return Nothing;
 			else if(tab[x-1][y+1] == White){
 				if(tab[x-2][y+2] == 0)
-					return 2;
+					return BeatL;
 				else
-					return 0;
+					return Nothing;
 			}
 		}
 	}
-	return 0;
+	return Nothing;
 }
 
-int Move::CheckRight(Pole tab[8][8], int x, int y){
+Possibility Move::CheckRight(Pole tab[8][8], int x, int y){
 	if(x == 6 || y == 6){
 		if(tab[x+1][y+1] == 0)
-			return 1;
+			return MoveR;
 		else
-			return 0;
+			return Nothing;
 	}else if(x < 6 && y < 6){
 		if(tab[x+1][y+1] == 0)
-			return 1;
+			return MoveR;
 		else{
 			if(tab[x+1][y+1] == Black)
-				return 0;
+				return Nothing;
 			else if(tab[x+1][y+1] == White){
 				if(tab[x+2][y+2] == 0)
-					return 2;
+					return BeatR;
 				else
-					return 0;
+					return Nothing;
 			}
 		}
 	}
-	return 0;
+	return Nothing;
 }
 
 void Move::MoveLeft(Pole tab[8][8], int x, int y){

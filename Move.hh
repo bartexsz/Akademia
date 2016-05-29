@@ -14,10 +14,14 @@ enum Pole{
 	Empty, White, Black, WhiteQueen, BlackQueen
 };
 
+enum Possibility{
+	Nothing, MoveL, MoveR, BeatL, BeatR
+};
+
 class Move{
 public:
-	int CheckLeft(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
-	int CheckRight(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	Possibility CheckLeft(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	Possibility CheckRight(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
 	void MoveLeft(Pole tab[8][8], int x, int y);
 	void MoveRight(Pole tab[8][8], int x, int y);
 	void BeatLeft(Pole tab[8][8], int x, int y);
