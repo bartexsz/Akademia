@@ -9,12 +9,14 @@
 
 Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
 	if(x == 1 || y == 6){
-		if(tab[x-1][y+1] == 0)
+		if(tab[x-1][y+1] == Empty)
 			return MoveL;
 		else
-			return 0;
-	}else if(x > 1 && y < 6){
-		if(tab[x-1][y+1] == 0)
+			return Nothing;
+	}
+
+	else if(x > 1 && y < 6){
+		if(tab[x-1][y+1] == Empty)
 			return MoveL;
 		else{
 			if(tab[x-1][y+1] == Black)
@@ -32,18 +34,22 @@ Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
 
 Possibility Move::CheckRight(Pole tab[8][8], int x, int y){
 	if(x == 6 || y == 6){
-		if(tab[x+1][y+1] == 0)
+
+		if(tab[x+1][y+1] == Empty)
 			return MoveR;
 		else
 			return Nothing;
 	}else if(x < 6 && y < 6){
-		if(tab[x+1][y+1] == 0)
+		if(tab[x+1][y+1] == Empty)
+		{
+			cout<<"\nmoge w prawo\n";
 			return MoveR;
+		}
 		else{
 			if(tab[x+1][y+1] == Black)
 				return Nothing;
 			else if(tab[x+1][y+1] == White){
-				if(tab[x+2][y+2] == 0)
+				if(tab[x+2][y+2] == Empty)
 					return BeatR;
 				else
 					return Nothing;
@@ -62,6 +68,8 @@ void Move::MoveLeft(Pole tab[8][8], int x, int y){
 void Move::MoveRight(Pole tab[8][8], int x, int y){
 	tab[x+1][y+1] = tab[x][y];
 	tab[x][y] = Empty;
+	cout<<"lece w prawo";
+	cout<<"\n"<<tab[x][y];
 
 }
 

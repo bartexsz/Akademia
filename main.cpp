@@ -7,13 +7,13 @@
 //============================================================================
 
 #include <iostream>
-#include "Plansza.hh"
+#include "Gra.hh"
 using namespace std;
 
 
 int main() {
-	Tablica test;
-	test.Initiation();
-	test.Wyswietl();
+
+	Gra gracznagracza;
+	gracznagracza.Player_vs_Player();
 	return 0;
 }

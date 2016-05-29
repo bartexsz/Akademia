@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include "Move.hh"
+#include <list>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ private:
 public:
 	void Initiation();
 	void Wyswietl();
+	void Player_vs_Player();
 };
 
 

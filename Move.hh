@@ -7,15 +7,15 @@
 
 #ifndef MOVE_HH_
 #define MOVE_HH_
-
+#include<iostream>
 using namespace std;
 
 enum Pole{
-	Empty, White, Black, WhiteQueen, BlackQueen
+	Empty=0, White=1, Black=2, WhiteQueen=3, BlackQueen=4
 };
 
 enum Possibility{
-	Nothing, MoveL, MoveR, BeatL, BeatR
+	Nothing=0, MoveL=1, MoveR=2, BeatL=3, BeatR=4
 };
 
 class Move{
