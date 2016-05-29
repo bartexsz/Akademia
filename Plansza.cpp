@@ -26,6 +26,12 @@ int Pionek::GetY(){
 	return _y;
 }
 
+void Pionek::SetWartosc(int w){
+	_wartosc = w;
+}
+int Pionek::GetWartosc(){
+	return _wartosc;
+}
 
 void Tablica::Wyswietl()
 {
@@ -86,6 +92,7 @@ void Tablica::Initiation()
 			Pionek P(white,i,j);
 			WhiteList.push_back(P);
 			tab[i][j] = &WhiteList.back();
+			SetWartosc(tab[i][j]);
 			cout<<"Bialy pionek dla:"<<"x="<<i<<" y="<<j<<endl;
 		}
 	}
@@ -110,6 +117,7 @@ void Tablica::Initiation()
 			Pionek P(black,i,j);
 			BlackList.push_back(P);
 			tab[i][j] = &BlackList.back();
+			SetWartosc(tab[i][j]);
 			cout<<"Czarny pionek dla:"<<"x="<<i<<" y="<<j<<endl;
 		}
 	}
@@ -198,4 +206,120 @@ void Tablica::BeatRight(Pionek *P){
 	tab[P->GetX()][P->GetY()] = 0;
 	P->SetX(P->GetX()+2);
 	P->SetY(P->GetY()+2);
+}
+
+void Tablica::SetWartosc(Pionek *P){
+	int wartosc = 0;
+	if(P->GetY() >= 0 && P->GetY() < 2)
+		wartosc += 1;
+	else if(P->GetY() > 1 && P->GetY() < 4)
+		wartosc += 2;
+	else if(P->GetY() > 3 && P->GetY() < 6)
+		wartosc += 3;
+	else if(P->GetY() > 5 && P->GetY() < 8)
+		wartosc += 4;
+
+	if(P->GetY()  < 1 || P->GetY() > 6 || P->GetX() < 1 || P->GetX() > 6)
+		wartosc += 6;
+	else if(P->GetY()  < 2 || P->GetY() > 5 || P->GetX() < 2 || P->GetX() > 5)
+		wartosc += 4;
+	else
+		wartosc += 2;
+	P->SetWartosc(wartosc);
+}
+
+int Move::CheckLeft(Pionek *tab[8][8], Pionek P){
+	if(P.GetX() == 1 || P.GetY() == 6){
+		if(tab[P.GetX()-1][P.GetY()+1] == 0)
+			return 1;
+		else
+			return 0;
+	}else if(P.GetX() > 1 && P.GetY() < 6){
+		if(tab[P.GetX()-1][P.GetY()+1] == 0)
+			return 1;
+		else{
+			if(tab[P.GetX()-1][P.GetY()+1]->GetColor() == black)
+				return 0;
+			else if(tab[P.GetX()-1][P.GetY()+1]->GetColor() == white){
+				if(tab[P.GetX()-2][P.GetY()+2] == 0)
+					return 2;
+				else
+					return 0;
+			}
+		}
+	}
+	return 0;
+}
+
+int Move::CheckRight(Pionek *tab[8][8],Pionek P){
+	if(P.GetX() == 6 || P.GetY() == 6){
+		if(tab[P.GetX()+1][P.GetY()+1] == 0)
+			return 1;
+		else
+			return 0;
+	}else if(P.GetX() < 6 && P.GetY() < 6){
+		if(tab[P.GetX()+1][P.GetY()+1] == 0)
+			return 1;
+		else{
+			if(tab[P.GetX()+1][P.GetY()+1]->GetColor() == black)
+				return 0;
+			else if(tab[P.GetX()+1][P.GetY()+1]->GetColor() == white){
+				if(tab[P.GetX()+2][P.GetY()+2] == 0)
+					return 2;
+				else
+					return 0;
+			}
+		}
+	}
+	return 0;
+}
+
+void Move::MoveLeft(Pionek *tab[8][8], Pionek *P){
+	tab[P->GetX()-1][P->GetY()+1] = P;
+	tab[P->GetX()][P->GetY()] = 0;
+	P->SetX(P->GetX()-1);
+	P->SetY(P->GetY()+1);
+}
+
+void Move::MoveRight(Pionek *tab[8][8], Pionek *P){
+	tab[P->GetX()+1][P->GetY()+1] = P;
+	tab[P->GetX()][P->GetY()] = 0;
+	P->SetX(P->GetX()+1);
+	P->SetY(P->GetY()+1);
+}
+
+void Move::BeatLeft(Pionek *tab[8][8], Pionek *P){
+	tab[P->GetX()-2][P->GetY()+2] = P;
+	tab[P->GetX()-1][P->GetY()+1] = 0;
+	tab[P->GetX()][P->GetY()] = 0;
+	P->SetX(P->GetX()-2);
+	P->SetY(P->GetY()+2);
+}
+
+void Move::BeatRight(Pionek *tab[8][8], Pionek *P){
+	tab[P->GetX()+2][P->GetY()+2] = P;
+	tab[P->GetX()+1][P->GetY()+1] = 0;
+	tab[P->GetX()][P->GetY()] = 0;
+	P->SetX(P->GetX()+2);
+	P->SetY(P->GetY()+2);
+}
+
+int Move::GetWartosc(Pionek P){
+	int wartosc = 0;
+	if(P.GetY() >= 0 && P.GetY() < 2)
+		wartosc += 1;
+	else if(P.GetY() > 1 && P.GetY() < 4)
+		wartosc += 2;
+	else if(P.GetY() > 3 && P.GetY() < 6)
+		wartosc += 3;
+	else if(P.GetY() > 5 && P.GetY() < 8)
+		wartosc += 4;
+
+	if(P.GetY()  < 1 || P.GetY() > 6 || P.GetX() < 1 || P.GetX() > 6)
+		wartosc += 6;
+	else if(P.GetY()  < 2 || P.GetY() > 5 || P.GetX() < 2 || P.GetX() > 5)
+		wartosc += 4;
+	else
+		wartosc += 2;
+	return wartosc;
 }
