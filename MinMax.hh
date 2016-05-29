@@ -29,7 +29,8 @@ private:
 public:
 	void CopyTab(Pole main_tab[8][8]);
 	int Value(); // funkcja oceniajaca
-	void MakeTree(Pole main_tab[8][8]);
+	void Algorithm(Pole main_tab[8][8]);
+	void MinMax();
 };
 
 

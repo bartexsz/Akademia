@@ -43,7 +43,7 @@ int MinMax::Value(){
 	return wartosc;
 }
 
-void MinMax::MakeTree(Pole main_tab[8][8]){
+void MinMax::Algorithm(Pole main_tab[8][8]){
 	CopyTab(main_tab);
 	for(int j = 0; j < 8; j++){
 		for(int i = j%2; i < 8; i+=2){
@@ -53,4 +53,8 @@ void MinMax::MakeTree(Pole main_tab[8][8]){
 			}
 		}
 	}
+}
+
+void MinMax::MinMax(){
+
 }
