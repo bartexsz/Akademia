@@ -55,45 +55,56 @@ int Move::CheckRight(Pole tab[8][8], int x, int y){
 
 void Move::MoveLeft(Pole tab[8][8], int x, int y){
 	tab[x-1][y+1] = tab[x][y];
-	tab[x][y] = 0;
+	tab[x][y] = Empty;
 
 }
 
 void Move::MoveRight(Pole tab[8][8], int x, int y){
 	tab[x+1][y+1] = tab[x][y];
-	tab[x][y] = 0;
+	tab[x][y] = Empty;
 
 }
 
 void Move::BeatLeft(Pole tab[8][8], int x, int y){
 	tab[x-2][y+2] = tab[x][y];
-	tab[x-1][y+1] = 0;
-	tab[x][y] = 0;
+	tab[x-1][y+1] = Empty;
+	tab[x][y] = Empty;
 }
 
 void Move::BeatRight(Pole tab[8][8], int x, int y){
 	tab[x+2][y+2] = tab[x][y];
-	tab[x+1][y+1] = 0;
-	tab[x][y] = 0;
+	tab[x+1][y+1] = Empty;
+	tab[x][y] = Empty;
 }
 
-int Move::GetWartosc(int x, int y){
-	int wartosc = 0;
-	if(y >= 0 && y < 2)
-		wartosc += 1;
-	else if(y > 1 && y < 4)
-		wartosc += 2;
-	else if(y > 3 && y < 6)
-		wartosc += 3;
-	else if(y > 5 && y < 8)
-		wartosc += 4;
+void Move::ReturnMoveLeft(Pole tab[8][8], int x, int y){
+	tab[x+1][y-1] = tab[x][y];
+	tab[x][y] = Empty;
 
-	if(y  < 1 || y > 6 || x < 1 || x > 6)
-		wartosc += 6;
-	else if(y  < 2 || y > 5 || x < 2 || x > 5)
-		wartosc += 4;
-	else
-		wartosc += 2;
-	return wartosc;
 }
+
+void Move::ReturnMoveRight(Pole tab[8][8], int x, int y){
+	tab[x-1][y-1] = tab[x][y];
+	tab[x][y] = Empty;
+
+}
+
+void Move::ReturnBeatLeft(Pole tab[8][8], int x, int y){
+	tab[x+2][y-2] = tab[x][y];
+	if(tab[x][y] == White)
+		tab[x+1][y-1] = Black;
+	else if(tab[x][y] == Black)
+		tab[x+1][y-1] = White;
+	tab[x][y] = Empty;
+}
+
+void Move::ReturnBeatRight(Pole tab[8][8], int x, int y){
+	tab[x-2][y-2] = tab[x][y];
+	if(tab[x][y] == White)
+		tab[x-1][y-1] = Black;
+	else if(tab[x][y] == Black)
+		tab[x-1][y-1] = White;
+	tab[x][y] = Empty;
+}
+
 

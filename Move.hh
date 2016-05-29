@@ -22,7 +22,10 @@ public:
 	void MoveRight(Pole tab[8][8], int x, int y);
 	void BeatLeft(Pole tab[8][8], int x, int y);
 	void BeatRight(Pole tab[8][8], int x, int y);
-	int GetWartosc(int x, int y); // funkcja oceniajaca
+	void ReturnMoveLeft(Pole tab[8][8], int x, int y);
+	void ReturnMoveRight(Pole tab[8][8], int x, int y);
+	void ReturnBeatLeft(Pole tab[8][8], int x, int y);
+	void ReturnBeatRight(Pole tab[8][8], int x, int y);
 };
 
 

@@ -8,6 +8,7 @@
 #ifndef GRA_HH_
 #define GRA_HH_
 
+#include <iostream>
 #include "Move.hh"
 
 using namespace std;
@@ -16,6 +17,7 @@ class Gra{
 private:
 	Pole tab[8][8];
 public:
+	void Initiation();
 };
 
 
