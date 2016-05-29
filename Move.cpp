@@ -7,7 +7,7 @@
 
 #include "Move.hh"
 
-Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
+Possibility Move::CheckLeftWhite(Pole tab[8][8], int x, int y){
 	if(x == 1 || y == 6){
 		if(tab[x-1][y+1] == 0)
 			return MoveL;
@@ -30,7 +30,7 @@ Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
 	return Nothing;
 }
 
-Possibility Move::CheckRight(Pole tab[8][8], int x, int y){
+Possibility Move::CheckRightWhite(Pole tab[8][8], int x, int y){
 	if(x == 6 || y == 6){
 		if(tab[x+1][y+1] == 0)
 			return MoveR;
@@ -53,43 +53,43 @@ Possibility Move::CheckRight(Pole tab[8][8], int x, int y){
 	return Nothing;
 }
 
-void Move::MoveLeft(Pole tab[8][8], int x, int y){
+void Move::MoveLeftWhite(Pole tab[8][8], int x, int y){
 	tab[x-1][y+1] = tab[x][y];
 	tab[x][y] = Empty;
 
 }
 
-void Move::MoveRight(Pole tab[8][8], int x, int y){
+void Move::MoveRightWhite(Pole tab[8][8], int x, int y){
 	tab[x+1][y+1] = tab[x][y];
 	tab[x][y] = Empty;
 
 }
 
-void Move::BeatLeft(Pole tab[8][8], int x, int y){
+void Move::BeatLeftWhite(Pole tab[8][8], int x, int y){
 	tab[x-2][y+2] = tab[x][y];
 	tab[x-1][y+1] = Empty;
 	tab[x][y] = Empty;
 }
 
-void Move::BeatRight(Pole tab[8][8], int x, int y){
+void Move::BeatRightWhite(Pole tab[8][8], int x, int y){
 	tab[x+2][y+2] = tab[x][y];
 	tab[x+1][y+1] = Empty;
 	tab[x][y] = Empty;
 }
 
-void Move::ReturnMoveLeft(Pole tab[8][8], int x, int y){
+void Move::ReturnMoveLeftWhite(Pole tab[8][8], int x, int y){
 	tab[x+1][y-1] = tab[x][y];
 	tab[x][y] = Empty;
 
 }
 
-void Move::ReturnMoveRight(Pole tab[8][8], int x, int y){
+void Move::ReturnMoveRightWhite(Pole tab[8][8], int x, int y){
 	tab[x-1][y-1] = tab[x][y];
 	tab[x][y] = Empty;
 
 }
 
-void Move::ReturnBeatLeft(Pole tab[8][8], int x, int y){
+void Move::ReturnBeatLeftWhite(Pole tab[8][8], int x, int y){
 	tab[x+2][y-2] = tab[x][y];
 	if(tab[x][y] == White)
 		tab[x+1][y-1] = Black;
@@ -98,12 +98,113 @@ void Move::ReturnBeatLeft(Pole tab[8][8], int x, int y){
 	tab[x][y] = Empty;
 }
 
-void Move::ReturnBeatRight(Pole tab[8][8], int x, int y){
+void Move::ReturnBeatRightWhite(Pole tab[8][8], int x, int y){
 	tab[x-2][y-2] = tab[x][y];
 	if(tab[x][y] == White)
 		tab[x-1][y-1] = Black;
 	else if(tab[x][y] == Black)
 		tab[x-1][y-1] = White;
+	tab[x][y] = Empty;
+}
+
+
+Possibility Move::CheckLeftBlack(Pole tab[8][8], int x, int y){
+	if(x == 6 || y == 1){
+		if(tab[x+1][y-1] == 0)
+			return MoveL;
+		else
+			return Nothing;
+	}else if(x < 6 && y > 1){
+		if(tab[x+1][y-1] == 0)
+			return MoveL;
+		else{
+			if(tab[x+1][y-1] == Black)
+				return Nothing;
+			else if(tab[x+1][y-1] == White){
+				if(tab[x+2][y-2] == 0)
+					return BeatL;
+				else
+					return Nothing;
+			}
+		}
+	}
+	return Nothing;
+}
+
+Possibility Move::CheckRightBlack(Pole tab[8][8], int x, int y){
+	if(x == 1 || y == 1){
+		if(tab[x-1][y-1] == 0)
+			return MoveR;
+		else
+			return Nothing;
+	}else if(x > 1 && y > 1){
+		if(tab[x-1][y-1] == 0)
+			return MoveR;
+		else{
+			if(tab[x-1][y-1] == Black)
+				return Nothing;
+			else if(tab[x-1][y-1] == White){
+				if(tab[x-2][y-2] == 0)
+					return BeatR;
+				else
+					return Nothing;
+			}
+		}
+	}
+	return Nothing;
+}
+
+void Move::MoveLeftBlack(Pole tab[8][8], int x, int y){
+	tab[x+1][y-1] = tab[x][y];
+	tab[x][y] = Empty;
+
+}
+
+void Move::MoveRightBlack(Pole tab[8][8], int x, int y){
+	tab[x-1][y-1] = tab[x][y];
+	tab[x][y] = Empty;
+
+}
+
+void Move::BeatLeftBlack(Pole tab[8][8], int x, int y){
+	tab[x+2][y-2] = tab[x][y];
+	tab[x+1][y-1] = Empty;
+	tab[x][y] = Empty;
+}
+
+void Move::BeatRightBlack(Pole tab[8][8], int x, int y){
+	tab[x-2][y-2] = tab[x][y];
+	tab[x-1][y-1] = Empty;
+	tab[x][y] = Empty;
+}
+
+void Move::ReturnMoveLeftBlack(Pole tab[8][8], int x, int y){
+	tab[x-1][y+1] = tab[x][y];
+	tab[x][y] = Empty;
+
+}
+
+void Move::ReturnMoveRightBlack(Pole tab[8][8], int x, int y){
+	tab[x+1][y+1] = tab[x][y];
+	tab[x][y] = Empty;
+
+}
+
+void Move::ReturnBeatLeftBlack(Pole tab[8][8], int x, int y){
+	tab[x-2][y+2] = tab[x][y];
+	if(tab[x][y] == White)
+		tab[x-1][y+1] = Black;
+	else if(tab[x][y] == Black)
+		tab[x-1][y+1] = White;
+	tab[x][y] = Empty;
+}
+
+void Move::ReturnBeatRightBlack(Pole tab[8][8], int x, int y){
+	tab[x+2][y+2] = tab[x][y];
+	if(tab[x][y] == White)
+		tab[x+1][y+1] = Black;
+	else if(tab[x][y] == Black)
+		tab[x+1][y+1] = White;
 	tab[x][y] = Empty;
 }
 

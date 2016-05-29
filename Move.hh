@@ -20,16 +20,26 @@ enum Possibility{
 
 class Move{
 public:
-	Possibility CheckLeft(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
-	Possibility CheckRight(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
-	void MoveLeft(Pole tab[8][8], int x, int y);
-	void MoveRight(Pole tab[8][8], int x, int y);
-	void BeatLeft(Pole tab[8][8], int x, int y);
-	void BeatRight(Pole tab[8][8], int x, int y);
-	void ReturnMoveLeft(Pole tab[8][8], int x, int y);
-	void ReturnMoveRight(Pole tab[8][8], int x, int y);
-	void ReturnBeatLeft(Pole tab[8][8], int x, int y);
-	void ReturnBeatRight(Pole tab[8][8], int x, int y);
+	Possibility CheckLeftWhite(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	Possibility CheckRightWhite(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	void MoveLeftWhite(Pole tab[8][8], int x, int y);
+	void MoveRightWhite(Pole tab[8][8], int x, int y);
+	void BeatLeftWhite(Pole tab[8][8], int x, int y);
+	void BeatRightWhite(Pole tab[8][8], int x, int y);
+	void ReturnMoveLeftWhite(Pole tab[8][8], int x, int y);
+	void ReturnMoveRightWhite(Pole tab[8][8], int x, int y);
+	void ReturnBeatLeftWhite(Pole tab[8][8], int x, int y);
+	void ReturnBeatRightWhite(Pole tab[8][8], int x, int y);
+	Possibility CheckLeftBlack(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	Possibility CheckRightBlack(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
+	void MoveLeftBlack(Pole tab[8][8], int x, int y);
+	void MoveRightBlack(Pole tab[8][8], int x, int y);
+	void BeatLeftBlack(Pole tab[8][8], int x, int y);
+	void BeatRightBlack(Pole tab[8][8], int x, int y);
+	void ReturnMoveLeftBlack(Pole tab[8][8], int x, int y);
+	void ReturnMoveRightBlack(Pole tab[8][8], int x, int y);
+	void ReturnBeatLeftBlack(Pole tab[8][8], int x, int y);
+	void ReturnBeatRightBlack(Pole tab[8][8], int x, int y);
 };
 
 

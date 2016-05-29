@@ -39,7 +39,8 @@ void MinMax::MakeTree(Pole main_tab[8][8]){
 	for(int j = 0; j < 8; j++){
 		for(int i = j%2; i < 8; i+=2){
 			if(tab[i][j] == Black){
-				M.CheckLeft(tab, i, j);
+				Possibility = M.CheckLeft(tab, i, j);
+				if(Possi)
 			}
 		}
 	}
