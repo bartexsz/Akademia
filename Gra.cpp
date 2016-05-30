@@ -222,7 +222,7 @@ void Gra::Wyswietl()
 		cout<<i<<" ";
 	}
 
-	cout<<"Pozostalo "<<pionki_biale<<"pionkow bialych oraz "<<pionki_czarne<<"pionkow czarnych";
+	cout<<"\nPozostalo "<<pionki_biale<<" pionkow bialych oraz "<<pionki_czarne<<" pionkow czarnych\n";
 
 
 

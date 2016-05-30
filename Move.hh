@@ -19,6 +19,7 @@ enum Possibility{
 	Nothing, MoveL, MoveR, BeatL, BeatR
 };
 
+
 class Move{
 public:
 	Possibility CheckLeft(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie

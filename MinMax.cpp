@@ -43,19 +43,64 @@ int MinMax::Value(){
 	return wartosc;
 }
 
-void MinMax::Algorithm(Pole main_tab[8][8]){
-	CopyTab(main_tab);
-	for(int j = 0; j < 8; j++){
-		for(int i = j%2; i < 8; i+=2){
-			if(tab[i][j] == Black){
-				Possibility = M.CheckLeft(tab, i, j);
-				if(Possi)
+
+
+void MinMax::MinMaxRecursion(int depth, Pole player){
+	if(depth <= DEPTH){
+		Possibility pos;
+		Pole next_player;
+		if(player == White)
+			next_player = Black;
+		else if(player == Black)
+			next_player = White;
+		if(depth == 1)
+			tmp_move.clear();
+		for(int j = 0; j < 8; j++){
+			for(int i = j%2; i < 8; i+=2){
+				if(tab[i][j] == player){
+					while((pos = M.CheckLeft(tab,i,j)) != Nothing){
+						if(pos == MoveL){
+							M.MoveLeft(tab,i,j);
+							if(depth == 1)
+								tmp_move.push_back(MoveL);
+							stos.push(MoveL);
+						}else if(pos == BeatL){
+							M.BeatLeft(tab,i,j);
+							if(depth == 1)
+								tmp_move.push_back(BeatL);
+							stos.push(BeatL);
+						}
+					}
+					MinMaxRecursion(depth+1,next_player);
+					while((pos = M.CheckRight(tab,i,j)) != Nothing){
+						if(pos == MoveR){
+							M.MoveRight(tab,i,j);
+							if(depth == 1)
+								tmp_move.push_back(MoveR);
+							stos.push(MoveR);
+						}
+						else if(pos == BeatR){
+							M.BeatRight(tab,i,j);
+							if(depth == 1)
+								tmp_move.push_back(BeatR);
+							stos.push(BeatR);
+						}
+					}
+					MinMaxRecursion(depth+1,next_player);
+				}
 			}
+		}
+	}else{
+		if(Value()<value){
+			value = Value();
+			for(list<Possibility>::iterator it = tmp_move.begin(); it != tmp_move.end(); it++)
+				move.push_back(*it);
 		}
 	}
 }
 
-void MinMax::MinMax(){
-
+void MinMax::Algorithm(Pole main_tab[8][8]){
+	CopyTab(main_tab);
+	value = INT_MAX;
 }
 
