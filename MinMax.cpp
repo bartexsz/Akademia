@@ -4,7 +4,7 @@
  *  Created on: May 27, 2016
  *      Author: damian
  */
-/*
+
 #include "MinMax.hh"
 
 void MinMax::CopyTab(Pole main_tab[8][8]){
@@ -58,4 +58,4 @@ void MinMax::Algorithm(Pole main_tab[8][8]){
 void MinMax::MinMax(){
 
 }
-*/
+

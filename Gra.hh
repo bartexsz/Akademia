@@ -23,7 +23,6 @@ public:
 	void Initiation();
 	void Wyswietl();
 	void Player_vs_Player();
-	void Usun_Pionek(int x,int y);
 };
 
 

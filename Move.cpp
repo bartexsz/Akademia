@@ -124,6 +124,7 @@ void Move::BeatLeft(Pole tab[8][8], int x, int y){
 		tab[x-2][y+2] = tab[x][y];
 		tab[x-1][y+1] = Empty;
 		tab[x][y] = Empty;
+
 	}else if(tab[x][y] == Black){
 		tab[x+2][y-2] = tab[x][y];
 		tab[x+1][y-1] = Empty;
