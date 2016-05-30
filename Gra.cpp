@@ -64,10 +64,10 @@ void Gra::Player_vs_Player()
 	Initiation();
 
 	list<Possibility> possibilities;
-	for(int i=0; i>-1; i++)
+	while(CzyKoniec()==false)
 	{
 		good=true;
-		Wyswietl();
+		Wyswietl(gracz);
 		if(gracz==White) cout<<"Gracz nr1\n";
 		else if (gracz==Black) cout<<"Gracz nr2\n";
 		cout<<"Wybierz pionek\n Podaj wspolrzedna x";
@@ -152,6 +152,7 @@ void Gra::Player_vs_Player()
 			case 2:
 				ruch.BeatLeft(tab, x, y);
 				if(gracz==White) pionki_czarne--;
+
 				break;
 			case 3:
 				ruch.MoveRight(tab, x, y);
@@ -174,7 +175,7 @@ void Gra::Player_vs_Player()
 }
 
 
-void Gra::Wyswietl()
+void Gra::Wyswietl(Pole gracz)
 {
 /*
 	cout<<"jou\n";
@@ -193,6 +194,8 @@ void Gra::Wyswietl()
 	}
 
 */
+	if(gracz==White)
+	{
 	for(int j=7; j>=0; j--)
 	{
 		for(int i=0; i<8; i++)
@@ -223,9 +226,97 @@ void Gra::Wyswietl()
 	}
 
 	cout<<"\nPozostalo "<<pionki_biale<<" pionkow bialych oraz "<<pionki_czarne<<" pionkow czarnych\n";
+	}
 
 
 
+	else if(gracz==Black)
+	{
+		for(int j=0; j<8; j++)
+		{
+			for(int i=7; i>=0; i--)
+			{
+				if(i==7)
+				{
+					cout<<j<<"  |";
+
+				}
+				if((((j%2)==0)&&((i%2)==1))||(((j%2)==1)&&((i%2)==0))) cout<<"_|";
+				else
+				{
+				if(tab[i][j]==Empty)  cout<<" |";
+				else
+				{
+					if(tab[i][j]==Black) cout<<"c|";
+					if(tab[i][j]==White) cout<<"b|";
+				}
+				}
+
+			}
+			cout<<endl;
+	}
+	cout<<"    ";
+	for (int i=7; i>=0; i--)
+	{
+		cout<<i<<" ";
+	}
+
+	cout<<"\nPozostalo "<<pionki_biale<<" pionkow bialych oraz "<<pionki_czarne<<" pionkow czarnych\n";
+	}
+
+
+}
+
+bool Gra::CzyKoniec()
+{
+	Move ruch;
+	bool czarny_rucha=false, bialy_rucha=false;
+	if(pionki_biale==0)
+	{
+		cout<<"\n\n\n **** KONIEC GRY ****\n\n Wygrały czarne";
+		return true;
+	}
+	else if(pionki_czarne==0)
+		{
+			cout<<"\n\n\n **** KONIEC GRY ****\n\n Wygrały białe";
+			return true;
+		}
+
+	for(int j=0; j<8; j++)
+	{
+		for (int i=0; i<8; i++)
+		{
+
+			if(czarny_rucha==false)
+			{
+				if((tab[i][j]==Black)&&(ruch.CheckLeft(tab, i ,j)!=Nothing)) czarny_rucha=true;
+				if((tab[i][j]==Black)&&(ruch.CheckRight(tab, i ,j)!=Nothing)) czarny_rucha=true;
+			}
+
+			if (bialy_rucha==false)
+			{
+				if((tab[i][j]==White)&&(ruch.CheckRight(tab, i ,j)!=Nothing)) bialy_rucha=true;
+				if((tab[i][j]==White)&&(ruch.CheckLeft(tab, i ,j)!=Nothing)) bialy_rucha=true;
+			}
+
+
+		}
+	}
+	if((bialy_rucha==true)&&(czarny_rucha==true)) return false;
+	else
+	{
+		if(bialy_rucha==false)
+		{
+			cout<<"\n\n\n **** KONIEC GRY ****\n\n Wygrały czarne";
+			return true;
+		}
+
+		else if(czarny_rucha==false)
+		{
+			cout<<"\n\n\n **** KONIEC GRY ****\n\n Wygrały białe";
+			return true;
+		}
+	}
 }
 
 

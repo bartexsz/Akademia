@@ -21,8 +21,9 @@ private:
 	int pionki_czarne;
 public:
 	void Initiation();
-	void Wyswietl();
+	void Wyswietl(Pole gracz);
 	void Player_vs_Player();
+	bool CzyKoniec();
 };
 
 
