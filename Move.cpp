@@ -13,12 +13,12 @@ Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
 			if(tab[x-1][y+1] == Empty)
 				return MoveL;
 			else
-				return 0;
+				return Nothing;
 		}else if(x > 1 && y < 6){
 			if(tab[x-1][y+1] == Empty)
 				return MoveL;
 			else{
-				if(tab[x-1][y+1] == Black)
+				if(tab[x-1][y+1] == White)
 					return Nothing;
 				else if(tab[x-1][y+1] == White){
 					if(tab[x-2][y+2] == Empty)
@@ -63,7 +63,7 @@ Possibility Move::CheckRight(Pole tab[8][8], int x, int y){
 			if(tab[x+1][y+1] == Empty)
 				return MoveR;
 			else{
-				if(tab[x+1][y+1] == Black)
+				if(tab[x+1][y+1] == White)
 					return Nothing;
 				else if(tab[x+1][y+1] == White){
 					if(tab[x+2][y+2] == Empty)
