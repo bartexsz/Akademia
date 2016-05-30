@@ -10,15 +10,19 @@
 
 #include <iostream>
 #include "Move.hh"
+#include <list>
 
 using namespace std;
 
 class Gra{
 private:
 	Pole tab[8][8];
+	int pionki_biale;
+	int pionki_czarne;
 public:
 	void Initiation();
 	void Wyswietl();
+	void Player_vs_Player();
 };
 
 

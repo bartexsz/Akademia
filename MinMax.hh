@@ -10,7 +10,6 @@
 
 #define DEPTH 1
 
-#include <stack>
 #include <list>
 #include <climits>
 #include "Move.hh"
@@ -21,7 +20,7 @@ using namespace std;
 class MinMax{
 private:
 	Pole tab[8][8];
-	stack<Possibility> stos;
+	int main_depth;
 	list<Possibility> move;
 	list<Possibility> tmp_move;
 	int value;
@@ -30,8 +29,9 @@ private:
 public:
 	void CopyTab(Pole main_tab[8][8]);
 	int Value(); // funkcja oceniajaca
-	void MinMaxRecursion(int depth, Pole player);
-	void Algorithm(Pole main_tab[8][8]);
+	int MinMaxRecursion(int depth, Pole player);
+	void Algorithm(Pole main_tab[8][8], int depth, list<Possibility> &Lista, int &xx, int &yy);
+	void CopyMove();
 };
 
 

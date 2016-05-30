@@ -4,7 +4,7 @@
  *  Created on: May 27, 2016
  *      Author: damian
  */
-
+/*
 #ifndef PLANSZA_HH_
 #define PLANSZA_HH_
 
@@ -81,3 +81,5 @@ public:
 
 
 #endif /* PLANSZA_HH_ */
+
+

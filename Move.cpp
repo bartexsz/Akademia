@@ -7,6 +7,16 @@
 
 #include "Move.hh"
 
+void MoveSequence::push(Possibility P){
+	Sequence.push_back(P);
+}
+
+Possibility MoveSequence::pop(){
+	Possibility P = Sequence.back();
+	Sequence.pop_back();
+	return P;
+}
+
 Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
 	if(tab[x][y] == White){
 		if(x == 1 || y == 6){
@@ -20,7 +30,7 @@ Possibility Move::CheckLeft(Pole tab[8][8], int x, int y){
 			else{
 				if(tab[x-1][y+1] == White)
 					return Nothing;
-				else if(tab[x-1][y+1] == White){
+				else if(tab[x-1][y+1] == Black){
 					if(tab[x-2][y+2] == Empty)
 						return BeatL;
 					else
@@ -65,7 +75,7 @@ Possibility Move::CheckRight(Pole tab[8][8], int x, int y){
 			else{
 				if(tab[x+1][y+1] == White)
 					return Nothing;
-				else if(tab[x+1][y+1] == White){
+				else if(tab[x+1][y+1] == Black){
 					if(tab[x+2][y+2] == Empty)
 						return BeatR;
 					else
@@ -124,6 +134,7 @@ void Move::BeatLeft(Pole tab[8][8], int x, int y){
 		tab[x-2][y+2] = tab[x][y];
 		tab[x-1][y+1] = Empty;
 		tab[x][y] = Empty;
+
 	}else if(tab[x][y] == Black){
 		tab[x+2][y-2] = tab[x][y];
 		tab[x+1][y-1] = Empty;

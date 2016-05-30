@@ -8,6 +8,9 @@
 #ifndef MOVE_HH_
 #define MOVE_HH_
 
+#include<iostream>
+#include<list>
+
 using namespace std;
 
 enum Pole{
@@ -18,6 +21,16 @@ enum Possibility{
 	Nothing, MoveL, MoveR, BeatL, BeatR
 };
 
+class MoveSequence{
+private:
+	list<Possibility> Sequence;
+public:
+	void push(Possibility P);
+	Possibility pop();
+	~MoveSequence(){
+		Sequence.clear();
+	}
+};
 
 class Move{
 public:
@@ -32,7 +45,5 @@ public:
 	void ReturnBeatLeft(Pole tab[8][8], int x, int y);
 	void ReturnBeatRight(Pole tab[8][8], int x, int y);
 };
-
-
 
 #endif /* MOVE_HH_ */

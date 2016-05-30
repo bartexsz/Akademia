@@ -4,7 +4,7 @@
  *  Created on: May 27, 2016
  *      Author: damian
  */
-
+/*
 #include "Plansza.hh"
 
 void Pionek::SetColor(color c){
@@ -67,8 +67,8 @@ void Tablica::Wyswietl()
 			if(tab[i][j]==0)  cout<<" |";
 			else
 			{
-				if((tab[i][j]->GetColor())==black) cout<<"c|";
-				if((tab[i][j]->GetColor())==white) cout<<"b|";
+				if(tab[i][j]==Black) cout<<"c|";
+				if(tab[i][j]==White) cout<<"b|";
 			}
 			}
 
@@ -323,3 +323,4 @@ int Move::GetWartosc(Pionek P){
 		wartosc += 2;
 	return wartosc;
 }
+*/
