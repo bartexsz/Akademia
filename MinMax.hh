@@ -10,6 +10,7 @@
 
 #define DEPTH 1
 
+
 #include <list>
 #include <climits>
 #include "Move.hh"
@@ -32,6 +33,7 @@ public:
 	int MinMaxRecursion(int depth, Pole player);
 	void Algorithm(Pole main_tab[8][8], int depth, list<Possibility> &Lista, int &xx, int &yy);
 	void CopyMove();
+
 };
 
 

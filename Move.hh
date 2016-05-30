@@ -9,6 +9,7 @@
 #define MOVE_HH_
 
 #include<iostream>
+
 #include<list>
 
 using namespace std;
@@ -21,6 +22,7 @@ enum Possibility{
 	Nothing, MoveL, MoveR, BeatL, BeatR
 };
 
+
 class MoveSequence{
 private:
 	list<Possibility> Sequence;
@@ -31,6 +33,7 @@ public:
 		Sequence.clear();
 	}
 };
+
 
 class Move{
 public:

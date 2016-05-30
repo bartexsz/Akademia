@@ -45,6 +45,7 @@ int MinMax::Value(){
 
 
 
+
 int MinMax::MinMaxRecursion(int depth, Pole player){
 	Pole next_player;
 	int v;
@@ -127,6 +128,7 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 	}
 }
 
+
 void MinMax::Algorithm(Pole main_tab[8][8],int depth, list<Possibility> &Lista, int &xx, int &yy){
 	CopyTab(main_tab);
 	main_depth = depth;
@@ -142,5 +144,6 @@ void MinMax::CopyMove(){
 		move.push_back(*it);
 	x = tmp_x;
 	y = tmp_y;
+
 }
 
