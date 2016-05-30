@@ -7,15 +7,16 @@
 
 #ifndef MOVE_HH_
 #define MOVE_HH_
+
 #include<iostream>
 using namespace std;
 
 enum Pole{
-	Empty=0, White=1, Black=2, WhiteQueen=3, BlackQueen=4
+	Empty, White, Black, WhiteQueen, BlackQueen
 };
 
 enum Possibility{
-	Nothing=0, MoveL=1, MoveR=2, BeatL=3, BeatR=4
+	Nothing, MoveL, MoveR, BeatL, BeatR
 };
 
 class Move{
@@ -31,7 +32,5 @@ public:
 	void ReturnBeatLeft(Pole tab[8][8], int x, int y);
 	void ReturnBeatRight(Pole tab[8][8], int x, int y);
 };
-
-
 
 #endif /* MOVE_HH_ */

@@ -8,11 +8,18 @@
 #ifndef MINMAX_HH_
 #define MINMAX_HH_
 
-#include <list>
+#include <stack>
 #include "Move.hh"
 
 using namespace std;
 
+class Node{
+private:
+	int x;
+	int y;
+	int color;
+	stack<int[4]>;
+};
 
 class MinMax{
 private:
@@ -21,8 +28,9 @@ private:
 	Move M;
 public:
 	void CopyTab(Pole main_tab[8][8]);
-	int Value(int x, int y); // funkcja oceniajaca
-	void MakeTree(Pole main_tab[8][8]);
+	int Value(); // funkcja oceniajaca
+	void Algorithm(Pole main_tab[8][8]);
+	void MinMax();
 };
 
 

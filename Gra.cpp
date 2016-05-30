@@ -49,26 +49,41 @@ void Gra::Initiation()
 				cout<<"Brak pionka dla "<<"x="<<i<<" y="<<j<<endl;
 			}
 		}
+	pionki_biale=12;
+	pionki_czarne=12;
 }
-
 
 
 
 void Gra::Player_vs_Player()
 {
-	int x,y, i ,j, wybor;
-	Initiation();
+	int x,y, wybor;
+	bool good;
+	Pole gracz=White;
 	Move ruch;
+	Initiation();
+
 	list<Possibility> possibilities;
 	for(int i=0; i>-1; i++)
 	{
+		good=true;
 		Wyswietl();
-		if((i%2)==0) cout<<"Gracz nr1\n";
-		else cout<<"Gracz nr2\n";
+		if(gracz==White) cout<<"Gracz nr1\n";
+		else if (gracz==Black) cout<<"Gracz nr2\n";
 		cout<<"Wybierz pionek\n Podaj wspolrzedna x";
 		cin>>x;
 		cout<<" Podaj wspolrzedna y";
 		cin>>y;
+		while(((tab[x][y]==White)&&(gracz==Black))||((tab[x][y]==Black)&&(gracz==White)))
+		{
+			cout<<"Nie mozesz wybrac figury przeciwnika!\n";
+			cout<<"Wybierz pionek\n Podaj wspolrzedna x";
+			cin>>x;
+			cout<<" Podaj wspolrzedna y";
+			cin>>y;
+
+		}
+		possibilities.clear();
 		if((ruch.CheckLeft(tab, x, y)==Nothing)&&(ruch.CheckRight(tab, x, y)==Nothing))
 			{
 				possibilities.push_back(Nothing);
@@ -101,7 +116,7 @@ void Gra::Player_vs_Player()
 
 
 		cout<<"n\n\n Co chcesz zrobic?\n";
-		cout<<"Aby wybrac inny ruch wybierz 0\n";
+		cout<<"Aby wybrac inna figure wybierz 0\n";
 		for( list<Possibility>::iterator iter=possibilities.begin(); iter != possibilities.end(); iter++ )
 		{
 			switch (*iter)
@@ -129,30 +144,35 @@ void Gra::Player_vs_Player()
 		switch(wybor)
 		{
 			case 0:
-				cout<<"spierdalaj";
+				good=false;
 				break;
 			case 1:
 				ruch.MoveLeft(tab, x, y);
 				break;
 			case 2:
 				ruch.BeatLeft(tab, x, y);
+				if(gracz==White) pionki_czarne--;
 				break;
 			case 3:
 				ruch.MoveRight(tab, x, y);
-				cout<<"Daje w prawo\n";
 				break;
 			case 4:
 				ruch.BeatRight(tab, x, y);
+				if(gracz==Black) pionki_czarne--;
 				break;
 			default:
-				cout<<"Chyba cos zjebales ;/ \n";
+				cout<<"Zly wybor! \n";
 				break;
 		}
-		possibilities.clear();
+		if(good==true)
+		{
 
-
+		if (gracz==White) gracz=Black;
+		else gracz=White;
+		}
 	}
 }
+
 
 void Gra::Wyswietl()
 {
@@ -202,8 +222,10 @@ void Gra::Wyswietl()
 		cout<<i<<" ";
 	}
 
-
+	cout<<"Pozostalo "<<pionki_biale<<"pionkow bialych oraz "<<pionki_czarne<<"pionkow czarnych";
 
 
 
 }
+
+

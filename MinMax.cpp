@@ -4,7 +4,7 @@
  *  Created on: May 27, 2016
  *      Author: damian
  */
-
+/*
 #include "MinMax.hh"
 
 void MinMax::CopyTab(Pole main_tab[8][8]){
@@ -14,33 +14,48 @@ void MinMax::CopyTab(Pole main_tab[8][8]){
 	}
 }
 
-int MinMax::Value(int x, int y){
+int MinMax::Value(){
 	int wartosc = 0;
-	if(y >= 0 && y < 2)
-		wartosc += 1;
-	else if(y > 1 && y < 4)
-		wartosc += 2;
-	else if(y > 3 && y < 6)
-		wartosc += 3;
-	else if(y > 5 && y < 8)
-		wartosc += 4;
+	int tmp;
+	for(int j = 0; j < 8; j++){
+		for(int i = j%2; i < 8; i+=2){
+			tmp = 0;
+			if(j >= 0 && j < 2)
+				wartosc += 1;
+			else if(j > 1 && j < 4)
+				wartosc += 2;
+			else if(j > 3 && j < 6)
+				wartosc += 3;
+			else if(j > 5 && j < 8)
+				wartosc += 4;
 
-	if(y  < 1 || y > 6 || x < 1 || x > 6)
-		wartosc += 6;
-	else if(y  < 2 || y > 5 || x < 2 || x > 5)
-		wartosc += 4;
-	else
-		wartosc += 2;
+			if(j  < 1 || j > 6 || i < 1 || i > 6)
+				wartosc += 6;
+			else if(j  < 2 || j > 5 || i < 2 || i > 5)
+				wartosc += 4;
+			else
+				wartosc += 2;
+			if(tab[i][j] == White)
+				tmp = -tmp;
+			wartosc += tmp;
+		}
+	}
 	return wartosc;
 }
 
-void MinMax::MakeTree(Pole main_tab[8][8]){
+void MinMax::Algorithm(Pole main_tab[8][8]){
 	CopyTab(main_tab);
 	for(int j = 0; j < 8; j++){
 		for(int i = j%2; i < 8; i+=2){
 			if(tab[i][j] == Black){
-				M.CheckLeft(tab, i, j);
+				Possibility = M.CheckLeft(tab, i, j);
+				if(Possi)
 			}
 		}
 	}
 }
+
+void MinMax::MinMax(){
+
+}
+*/
