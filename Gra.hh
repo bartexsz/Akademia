@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Move.hh"
 #include <list>
+#include "MinMax.hh"
 
 using namespace std;
 
@@ -24,6 +25,13 @@ public:
 	void Wyswietl(Pole gracz);
 	void Player_vs_Player();
 	bool CzyKoniec();
+	void Player_vs_Ameba();
+	void Test();
+	void Interfejs_Gracza(Pole tab,int &x,int &y, list<Possibility> &possibilities, Pole gracz);
+	void Wybor(int &x, int &y, Pole gracz);
+	void Odejmij_pionka(Pole pionek);
+	Possibility CoKcesz(int wybor);
+	bool CzyMozna(list<Possibility> &cobylo, Possibility wybor);
 };
 
 
