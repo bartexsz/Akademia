@@ -319,4 +319,12 @@ bool Gra::CzyKoniec()
 	}
 }
 
+void Gra::Test(){
+	list<Possibility> lista;
+	int x, y;
+	Initiation();
+	Wyswietl(White);
+	minmax.Algorithm(tab,2,lista,x,y);
+	cout<<lista.back()<<endl;
+}
 

@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Move.hh"
 #include <list>
+#include "MinMax.hh"
 
 using namespace std;
 
@@ -19,11 +20,13 @@ private:
 	Pole tab[8][8];
 	int pionki_biale;
 	int pionki_czarne;
+	MinMax minmax;
 public:
 	void Initiation();
 	void Wyswietl(Pole gracz);
 	void Player_vs_Player();
 	bool CzyKoniec();
+	void Test();
 };
 
 

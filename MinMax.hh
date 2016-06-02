@@ -13,6 +13,7 @@
 
 #include <list>
 #include <climits>
+#include <iostream>
 #include "Move.hh"
 
 using namespace std;

@@ -47,12 +47,13 @@ int MinMax::Value(){
 
 
 int MinMax::MinMaxRecursion(int depth, Pole player){
+	cout<<"depth="<<depth<<endl;
 	Pole next_player;
 	int v;
 	int best_value;
 	int next_depth;
 
-	if(depth == 0)
+	if(depth = 0)
 		return Value();
 
 	if(depth == main_depth)
@@ -63,6 +64,7 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 		Possibility P;
 		for(int j = 0; j < 8; j++){
 			for(int i = j%2; i < 8; i+=2){
+				//cout<<"i="<<i<<", j="<<j<<endl;
 				if(tab[i][j] == player){
 					if((P = M.CheckLeft(tab,i,j)) == MoveL)
 						M.MoveLeft(tab,i,j);
@@ -70,7 +72,7 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 						M.BeatLeft(tab,i,j);
 					if((P = M.CheckLeft(tab,i,j)) == Nothing){
 							next_player = White;
-							next_depth = --depth;
+							next_depth = depth-1;
 					}else{
 						if(depth == main_depth){
 							tmp_move.push_back(P);
@@ -79,6 +81,7 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 						}
 					}
 					v = MinMaxRecursion(next_depth,next_player);
+					cout<<"after recursion, depth="<<depth<<endl;
 					if(P == MoveL)
 						M.ReturnMoveLeft(tab,i,j);
 					else if(P == BeatL)
@@ -87,10 +90,10 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 						best_value = v;
 						CopyMove();
 					}
-					return best_value;
 				}
 			}
 		}
+		return best_value;
 	}else if(player == White){
 		cout<<"player == White"<<endl;
 		best_value = INT_MAX;
@@ -98,13 +101,14 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 		for(int j = 0; j < 8; j++){
 			for(int i = j%2; i < 8; i+=2){
 				if(tab[i][j] == player){
+					//cout<<"i="<<i<<", j="<<j<<endl;
 					if((P = M.CheckLeft(tab,i,j)) == MoveL)
 						M.MoveLeft(tab,i,j);
 					else if((P = M.CheckLeft(tab,i,j)) == BeatL)
 						M.BeatLeft(tab,i,j);
 					if((P = M.CheckLeft(tab,i,j)) == Nothing){
-						next_player = White;
-						next_depth = --depth;
+						next_player = Black;
+						next_depth = depth-1;
 					}else{
 						if(depth == main_depth){
 							tmp_move.push_back(P);
@@ -113,6 +117,7 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 						}
 					}
 					v = MinMaxRecursion(next_depth,next_player);
+					cout<<"after recursion, depth="<<depth<<endl;
 					if(P == MoveR)
 						M.ReturnMoveRight(tab,i,j);
 					else if(P == BeatR)
@@ -121,10 +126,10 @@ int MinMax::MinMaxRecursion(int depth, Pole player){
 						best_value = v;
 						CopyMove();
 					}
-					return best_value;
 				}
 			}
 		}
+		return best_value;
 	}
 }
 

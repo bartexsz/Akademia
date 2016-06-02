@@ -13,7 +13,8 @@ using namespace std;
 
 int main() {
 
-	Gra gracznagracza;
-	gracznagracza.Player_vs_Player();
+
+	Gra gra;
+	gra.Test();
 	return 0;
 }
