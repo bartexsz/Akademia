@@ -15,6 +15,6 @@ int main() {
 
 
 	Gra gra;
-	gra.Test();
+	gra.TestDamian();
 	return 0;
 }

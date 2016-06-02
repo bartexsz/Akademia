@@ -37,6 +37,7 @@ public:
 
 class Move{
 public:
+	void Check(list<Possibility> &possibilities, Pole tab[8][8], int x, int y); //
 	Possibility CheckLeft(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
 	Possibility CheckRight(Pole tab[8][8], int x, int y); // 0 - nie ma ruchu, 1 - normalny ruch, 2 - bicie
 	void MoveLeft(Pole tab[8][8], int x, int y);
@@ -47,6 +48,7 @@ public:
 	void ReturnMoveRight(Pole tab[8][8], int x, int y);
 	void ReturnBeatLeft(Pole tab[8][8], int x, int y);
 	void ReturnBeatRight(Pole tab[8][8], int x, int y);
+	bool Action(Possibility wybor, Pole tab[8][8], int x, int y);
 };
 
 #endif /* MOVE_HH_ */
