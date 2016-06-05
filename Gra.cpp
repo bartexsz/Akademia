@@ -381,11 +381,21 @@ bool Gra::CzyKoniec()
 
 void Gra::TestDamian(){
 	list<Possibility> lista;
+	Move M;
 	int x, y;
 	Initiation();
+	M.Action(MoveL,tab,6,2);
+	M.Action(MoveR,tab,5,3);
+	M.Action(MoveR,tab,5,5);
+	/*M.Action(MoveL,tab,4,2);
+	M.Action(MoveL,tab,3,3);
+	M.Action(MoveL,tab,5,1);*/
 	Wyswietl(White);
-	minmax.Algorithm(tab,2,lista,x,y);
-	cout<<lista.back()<<endl;
+	int value = minmax.Algorithm(tab,2,lista,x,y);
+	cout<<"x: "<<x<<",y: "<<y<<",value: "<<value<<endl;
+	for(list<Possibility>::iterator it = lista.begin(); it != lista.end(); it++){
+		cout<<"Move: "<<*it<<endl;
+	}
 }
 
 

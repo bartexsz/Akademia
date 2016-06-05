@@ -21,6 +21,7 @@ using namespace std;
 
 class MinMax{
 private:
+	int licznik = 0;
 	Pole tab[8][8];
 	int main_depth;
 	list<Possibility> move;
@@ -28,12 +29,17 @@ private:
 	int value;
 	int x,y,tmp_x,tmp_y;
 	Move M;
+	int pionki_biale;
+	int pionki_czarne;
 public:
 	void CopyTab(Pole main_tab[8][8]);
 	int Value(); // funkcja oceniajaca
 	int MinMaxRecursion(int depth, Pole player);
-	void Algorithm(Pole main_tab[8][8], int depth, list<Possibility> &Lista, int &xx, int &yy);
+	int Algorithm(Pole main_tab[8][8], int depth, list<Possibility> &Lista, int &xx, int &yy);
+	void MultipleMove(int depth, Pole player,int x, int y, int &best_value);
 	void CopyMove();
+	void Wyswietl(Pole gracz);
+	int LiczPionki();
 
 };
 

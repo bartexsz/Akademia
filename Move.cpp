@@ -35,19 +35,19 @@ void Move::Check(list<Possibility> &possibilities, Pole tab[8][8], int x, int y)
 		else if (CheckRight(tab, x, y) == MoveR)
 		{
 			possibilities.push_back(MoveR);
-			cout<<"..Mozesz przesunac sie w prawo";
+			cout<<"..Mozesz przesunac sie w prawo\n";
 		}
 
 		if (CheckLeft(tab, x, y) == BeatL) {
 			possibilities.push_back(BeatL);
-			//cout<<"Mozesz bic w lewo\n";
+			cout<<"Mozesz bic w lewo\n";
 		}
 
 		else if (CheckLeft(tab, x, y) == MoveL)
 		{
 
 			possibilities.push_back(MoveL);
-			//cout<<"Mozesz przesunac sie w lewo";
+			cout<<"Mozesz przesunac sie w lewo\n";
 		}
 
 	}
@@ -190,29 +190,43 @@ void Move::BeatRight(Pole tab[8][8], int x, int y) {
 	}
 }
 
-void Move::ReturnMoveLeft(Pole tab[8][8], int x, int y) {
-	if (tab[x][y] == White) {
+void Move::ReturnMoveLeft(Pole tab[8][8], int x, int y, Pole player) {
+	/*if (tab[x][y] == White) {
 		tab[x + 1][y - 1] = tab[x][y];
 		tab[x][y] = Empty;
 	} else if (tab[x][y] == Black) {
 		tab[x - 1][y + 1] = tab[x][y];
 		tab[x][y] = Empty;
+	}*/
+	if (player == White) {
+		tab[x - 1][y + 1] = Empty;
+		tab[x][y] = White;
+	} else if (player == Black) {
+		tab[x + 1][y - 1] = Empty;
+		tab[x][y] = Black;
 	}
 }
 
-void Move::ReturnMoveRight(Pole tab[8][8], int x, int y) {
-	if (tab[x][y] == White) {
+void Move::ReturnMoveRight(Pole tab[8][8], int x, int y, Pole player) {
+	/*if (tab[x][y] == White) {
 		tab[x - 1][y - 1] = tab[x][y];
 		tab[x][y] = Empty;
 	} else if (tab[x][y] == Black) {
 		tab[x + 1][y + 1] = tab[x][y];
 		tab[x][y] = Empty;
+	}*/
+	if (player == White) {
+		tab[x + 1][y + 1] = Empty;
+		tab[x][y] = White;
+	} else if (player == Black) {
+		tab[x - 1][y - 1] = Empty;
+		tab[x][y] = Black;
 	}
 
 }
 
-void Move::ReturnBeatLeft(Pole tab[8][8], int x, int y) {
-	if (tab[x][y] == White) {
+void Move::ReturnBeatLeft(Pole tab[8][8], int x, int y, Pole player) {
+	/*if (tab[x][y] == White) {
 		tab[x + 2][y - 2] = tab[x][y];
 		if (tab[x][y] == White)
 			tab[x + 1][y - 1] = Black;
@@ -226,11 +240,21 @@ void Move::ReturnBeatLeft(Pole tab[8][8], int x, int y) {
 		else if (tab[x][y] == Black)
 			tab[x - 1][y + 1] = White;
 		tab[x][y] = Empty;
+	}*/
+	if (player == White) {
+		tab[x - 2][y + 2] = Empty;
+		tab[x - 1][y + 1] = Black;
+		tab[x][y] = White;
+
+	} else if (player == Black) {
+		tab[x + 2][y - 2] = Empty;
+		tab[x + 1][y - 1] = White;
+		tab[x][y] = Black;
 	}
 }
 
-void Move::ReturnBeatRight(Pole tab[8][8], int x, int y) {
-	if (tab[x][y] == White) {
+void Move::ReturnBeatRight(Pole tab[8][8], int x, int y, Pole player) {
+	/*if (tab[x][y] == White) {
 		tab[x - 2][y - 2] = tab[x][y];
 		if (tab[x][y] == White)
 			tab[x - 1][y - 1] = Black;
@@ -244,6 +268,15 @@ void Move::ReturnBeatRight(Pole tab[8][8], int x, int y) {
 		else if (tab[x][y] == Black)
 			tab[x + 1][y + 1] = White;
 		tab[x][y] = Empty;
+	}*/
+	if (player == White) {
+		tab[x + 2][y + 2] = Empty;
+		tab[x + 1][y + 1] = Black;
+		tab[x][y] = White;
+	} else if (player == Black) {
+		tab[x - 2][y - 2] = Empty;
+		tab[x - 1][y - 1] = White;
+		tab[x][y] = Black;
 	}
 }
 
@@ -254,19 +287,22 @@ bool Move::Action(Possibility wybor, Pole tab[8][8], int x, int y) {
 		break;
 	case MoveL:
 		MoveLeft(tab, x, y);
+		cout<<"MoveLeft"<<endl;
 		return true;
 		break;
 	case BeatL:
 		BeatLeft(tab, x, y);
+		cout<<"BeatLeft"<<endl;
 		return false;
 		break;
 	case MoveR:
 		MoveRight(tab, x, y);
+		cout<<"MoveRight"<<endl;
 		return true;
 		break;
 	case BeatR:
 		BeatRight(tab, x, y);
-		cout<<"\npowinienem bic\n";
+		cout<<"BeatRight"<<endl;
 		return false;
 		break;
 	default:
@@ -275,3 +311,36 @@ bool Move::Action(Possibility wybor, Pole tab[8][8], int x, int y) {
 		break;
 	}
 }
+
+bool Move::ReturnAction(Possibility wybor, Pole tab[8][8], int x, int y, Pole player){
+	switch (wybor) {
+	case Nothing:
+		return false;
+		break;
+	case MoveL:
+		ReturnMoveLeft(tab, x, y,player);
+		cout<<"ReturnMoveLeft"<<"x:"<<x<<",y: "<<y<<endl;
+		return true;
+		break;
+	case BeatL:
+		ReturnBeatLeft(tab, x, y,player);
+		cout<<"ReturnBeatLeft"<<"x:"<<x<<",y: "<<y<<endl;
+		return false;
+		break;
+	case MoveR:
+		ReturnMoveRight(tab, x, y,player);
+		cout<<"ReturnMoveRight"<<"x:"<<x<<",y: "<<y<<endl;
+		return true;
+		break;
+	case BeatR:
+		ReturnBeatRight(tab, x, y,player);
+		cout<<"ReturnBeatRight"<<"x:"<<x<<",y: "<<y<<endl;
+		return false;
+		break;
+	default:
+		cout << "Zly wybor! \n";
+		return false;
+		break;
+	}
+}
+

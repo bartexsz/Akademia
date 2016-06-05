@@ -44,11 +44,12 @@ public:
 	void MoveRight(Pole tab[8][8], int x, int y);
 	void BeatLeft(Pole tab[8][8], int x, int y);
 	void BeatRight(Pole tab[8][8], int x, int y);
-	void ReturnMoveLeft(Pole tab[8][8], int x, int y);
-	void ReturnMoveRight(Pole tab[8][8], int x, int y);
-	void ReturnBeatLeft(Pole tab[8][8], int x, int y);
-	void ReturnBeatRight(Pole tab[8][8], int x, int y);
+	void ReturnMoveLeft(Pole tab[8][8], int x, int y, Pole player);
+	void ReturnMoveRight(Pole tab[8][8], int x, int y, Pole player);
+	void ReturnBeatLeft(Pole tab[8][8], int x, int y, Pole player);
+	void ReturnBeatRight(Pole tab[8][8], int x, int y, Pole player);
 	bool Action(Possibility wybor, Pole tab[8][8], int x, int y);
+	bool ReturnAction(Possibility wybor, Pole tab[8][8], int x, int y, Pole player);
 };
 
 #endif /* MOVE_HH_ */
